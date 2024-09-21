@@ -1,0 +1,23 @@
+services:
+  windows:
+    image: dockurr/windows
+    container_name: windows
+    environment:
+      VERSION: "ltsc10"
+      LANGUAGE: "Chinese"
+      REGION: "Chinese"
+      RAM_SIZE: "16G"
+    volumes:
+      - ~/.docker_win:/storage
+      - ~/Downloads/SW_DVD9_WIN_ENT_LTSC_2021_64BIT_ChnSimp_MLF_X22-84402.ISO:/custom.iso # 使用本地的iso镜像
+      - ~/Downloads:/shared # 会在文件资源管理器中的网络host.lan里出现共享的文件夹
+    devices:
+      - /dev/kvm
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - 8006:8006
+      - 3389:3389/tcp
+      - 3389:3389/udp
+    stop_grace_period: 2m
+    restart: always

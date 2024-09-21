@@ -1,0 +1,14 @@
+services:
+  samba:
+    image: dockurr/samba
+    container_name: samba
+    environment:
+      NAME: "smb-shared"
+      USER: "share"
+      PASS: "changeme"
+    network_mode: "host"
+    ports:
+      - 445:445
+    volumes:
+      - ./storage:/storage
+    restart: unless-stopped
