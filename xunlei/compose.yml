@@ -1,0 +1,10 @@
+services:
+  xunlei:
+    volumes:
+      - ~/Downloads/xunlei/data:/xunlei/data
+      - ~/Downloads/xunlei/downloads:/xunlei/downloads
+    ports:
+      - 2345:2345
+    privileged: true
+    image: registry.cn-shenzhen.aliyuncs.com/cnk3x/xunlei:latest
+    restart: always

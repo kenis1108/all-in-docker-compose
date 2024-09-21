@@ -1,0 +1,18 @@
+services:
+    derper:
+        ports:
+            - 0.0.0.0:3478:3478/udp
+            - 0.0.0.0:50443:50443
+        volumes:
+            # 需要先使用sudo certbot certonly --standalone 生成证书文件 
+            - ./fullchain.pem:/app/certs/example.com.crt # 将example.com换成真实的域名
+            - ./privkey.pem:/app/certs/example.com.key  # 将example.com换成真实的域名
+            - /var/run/tailscale/tailscaled.sock:/var/run/tailscale/tailscaled.sock
+        environment:
+            - DERP_DOMAIN=example.com  # 将example.com换成真实的域名
+            - DERP_ADDR=:50443
+            - DERP_CERT_MODE=manual
+            - DERP_VERIFY_CLIENTS=true
+        container_name: derper
+        restart: always
+        image: fredliang/derper
