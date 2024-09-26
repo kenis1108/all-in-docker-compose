@@ -1,0 +1,9 @@
+services:
+  xunlei:
+    volumes:
+      - ~/Downloads/xunlei/data:/xunlei/data
+      - ~/Downloads/xunlei/downloads:/xunlei/downloads
+    ports:
+      - 2345:2345
+    privileged: true
+    image: cnk3x/xunlei
