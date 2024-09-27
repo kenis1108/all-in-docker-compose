@@ -4,8 +4,11 @@ services:
     container_name: windows
     environment:
       VERSION: "ltsc10"
-      REGION: "zh"
-      KEYBOARD: "zh"
+      LANGUAGE: "Chinese"
+      REGION: "Chinese"
+    volumes:
+      - ~/Downloads/xunlei/downloads/SW_DVD9_WIN_ENT_LTSC_2021_64BIT_ChnSimp_MLF_X22-84402.ISO/SW_DVD9_WIN_ENT_LTSC_2021_64BIT_ChnSimp_MLF_X22-84402.ISO:/custom.iso # 使用本地的iso镜像
+      - ~/Downloads:/shared # 会在文件资源管理器中的网络host.lan里出现共享的文件夹
     devices:
       - /dev/kvm
     cap_add:
